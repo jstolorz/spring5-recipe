@@ -1,6 +1,7 @@
 package org.bluesoft.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -21,6 +22,11 @@ public class Recipe {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
+
+
 
     Long getId() {
         return id;
@@ -101,4 +107,13 @@ public class Recipe {
     void setNotes(final Notes notes) {
         this.notes = notes;
     }
+
+    Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    void setIngredients(final Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
 }
