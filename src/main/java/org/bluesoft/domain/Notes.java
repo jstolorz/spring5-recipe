@@ -35,7 +35,7 @@ public class Notes {
         return recipeNotes;
     }
 
-    void setRecipeNotes(final String recipeNotes) {
+    public void setRecipeNotes(final String recipeNotes) {
         this.recipeNotes = recipeNotes;
     }
 }

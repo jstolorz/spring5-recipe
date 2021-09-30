@@ -1,6 +1,7 @@
 package org.bluesoft.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,7 +13,7 @@ public class Category {
     private String description;
 
     @ManyToMany(mappedBy = "categories")
-    private Set<Recipe> recipeSet;
+    private Set<Recipe> recipeSet = new HashSet<>();
 
     Long getId() {
         return id;
