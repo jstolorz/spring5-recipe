@@ -1,7 +1,12 @@
 package org.bluesoft.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 
+@Data
+@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
 public class Notes {
 
@@ -15,27 +20,4 @@ public class Notes {
     @Lob
     private String recipeNotes;
 
-    Long getId() {
-        return id;
-    }
-
-    void setId(final Long id) {
-        this.id = id;
-    }
-
-    Recipe getRecipe() {
-        return recipe;
-    }
-
-    void setRecipe(final Recipe recipe) {
-        this.recipe = recipe;
-    }
-
-    String getRecipeNotes() {
-        return recipeNotes;
-    }
-
-    public void setRecipeNotes(final String recipeNotes) {
-        this.recipeNotes = recipeNotes;
-    }
 }

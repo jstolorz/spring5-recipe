@@ -1,5 +1,6 @@
 package org.bluesoft.bootstrap;
 
+import lombok.extern.slf4j.Slf4j;
 import org.bluesoft.domain.*;
 import org.bluesoft.repositories.CategoryRepository;
 import org.bluesoft.repositories.RecipeRepository;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -30,7 +32,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Override
     @Transactional
     public void onApplicationEvent(final ContextRefreshedEvent event) {
-        System.out.println("[ => Start aplikacji My Recipy <= ]");
+        log.info("[ => Start aplikacji My Recipy <= ]");
         recipeRepository.saveAll(getRecipies());
     }
 
