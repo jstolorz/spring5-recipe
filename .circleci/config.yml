@@ -15,6 +15,10 @@ jobs:
           name: Test
           command: mvn test
 
+      - run:
+          name: Verify
+          command: mvn verify
+
 workflows:
   sample:
     jobs:
