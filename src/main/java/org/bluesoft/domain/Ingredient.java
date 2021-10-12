@@ -21,15 +21,15 @@ public class Ingredient {
     private Recipe recipe;
 
     @OneToOne
-    private UnitOfMeasure unitOfMeasure;
+    private UnitOfMeasure uom;
 
-    Ingredient() {
+    public Ingredient() {
     }
 
-    public Ingredient(final String description, final BigDecimal amount, final UnitOfMeasure unitOfMeasure) {
+    public Ingredient(final String description, final BigDecimal amount, final UnitOfMeasure uom) {
         this.description = description;
         this.amount = amount;
-        this.unitOfMeasure = unitOfMeasure;
+        this.uom = uom;
     }
 
 }
