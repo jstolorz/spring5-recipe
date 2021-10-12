@@ -93,7 +93,10 @@
                                 <ul>
                                     <li th:remove="all">1 Cup of weather</li>
                                     <li th:remove="all">1 Cup of sugar</li>
-                                    <li th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient.description}">1 Cup of milk</li>
+                                    <li th:each="ingredient : ${recipe.ingredients}"
+                                        th:text="${ingredient.amount
+                                        + ' ' + ingredient.unitOfMeasure.description
+                                        + ' - ' + ingredient.description}">1 Cup of milk</li>
                                 </ul>
                             </div>
                         </div>
