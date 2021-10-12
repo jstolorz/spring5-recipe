@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,7 +29,7 @@ class RecipeServiceForH2Test {
     }
 
     @Test
-    void getRecipes() throws Exception {
+    void getRecipesTest() throws Exception {
 
         Recipe recipe = new Recipe();
         HashSet<Recipe> recipeHashSet = new HashSet<>();
@@ -38,5 +40,22 @@ class RecipeServiceForH2Test {
         Set<Recipe> recipes = recipeService.getRecipes();
         assertEquals(recipes.size(),1);
         verify(recipeRepository, times(1)).findAll();
+        verify(recipeRepository, never()).findAllById(Collections.singleton(anyLong()));
+    }
+
+    @Test
+    void findByIdTest() throws Exception{
+        Recipe recipe = new Recipe();
+        recipe.setId(1L);
+        Optional<Recipe> optionalRecipe = Optional.of(recipe);
+
+        when(recipeRepository.findById(anyLong())).thenReturn(optionalRecipe);
+
+        Recipe returnedRecipe = recipeService.findById(1L);
+
+        assertEquals(1L, returnedRecipe.getId());
+        verify(recipeRepository, times(1)).findById(anyLong());
+        verify(recipeRepository,never()).findAll();
+
     }
 }
