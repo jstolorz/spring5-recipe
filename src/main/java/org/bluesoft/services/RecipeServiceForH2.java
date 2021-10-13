@@ -7,6 +7,7 @@ import org.bluesoft.converters.RecipeToRecipeCommand;
 import org.bluesoft.domain.Recipe;
 import org.bluesoft.repositories.RecipeRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -47,6 +48,7 @@ class RecipeServiceForH2 implements RecipeService {
     }
 
     @Override
+    @Transactional
     public RecipeCommand saveRecipeCommand(final RecipeCommand recipeCommand) {
         Recipe detachedRecipe = recipeCommandToRecipe.convert(recipeCommand);
 
