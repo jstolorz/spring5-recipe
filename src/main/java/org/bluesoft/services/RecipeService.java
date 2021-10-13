@@ -1,5 +1,6 @@
 package org.bluesoft.services;
 
+import org.bluesoft.commands.RecipeCommand;
 import org.bluesoft.domain.Recipe;
 import org.springframework.stereotype.Service;
 
@@ -10,4 +11,5 @@ public interface RecipeService {
 
     Set<Recipe> getRecipes();
     Recipe findById(Long id);
+    RecipeCommand saveRecipeCommand(RecipeCommand recipeCommand);
 }

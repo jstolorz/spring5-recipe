@@ -1,5 +1,7 @@
 package org.bluesoft.services;
 
+import org.bluesoft.converters.RecipeCommandToRecipe;
+import org.bluesoft.converters.RecipeToRecipeCommand;
 import org.bluesoft.domain.Recipe;
 import org.bluesoft.repositories.RecipeRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,10 +24,16 @@ class RecipeServiceForH2Test {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        recipeService = new RecipeServiceForH2(recipeRepository);
+        recipeService = new RecipeServiceForH2(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
