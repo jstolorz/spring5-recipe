@@ -8,7 +8,6 @@ import org.bluesoft.domain.Recipe;
 import org.bluesoft.repositories.RecipeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -55,5 +54,11 @@ class RecipeServiceForH2 implements RecipeService {
         Recipe savedRecipe = recipeRepository.save(detachedRecipe);
         log.debug("Saved RecipeId: " + savedRecipe.getId());
         return recipeToRecipeCommand.convert(savedRecipe);
+    }
+
+    @Override
+    @Transactional
+    public RecipeCommand findCommandById(final long id) {
+        return recipeToRecipeCommand.convert(findById(id));
     }
 }
