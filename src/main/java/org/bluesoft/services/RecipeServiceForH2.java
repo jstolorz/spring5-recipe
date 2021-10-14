@@ -61,4 +61,9 @@ class RecipeServiceForH2 implements RecipeService {
     public RecipeCommand findCommandById(final long id) {
         return recipeToRecipeCommand.convert(findById(id));
     }
+
+    @Override
+    public void deleteById(final Long id) {
+          recipeRepository.deleteById(id);
+    }
 }

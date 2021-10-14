@@ -64,6 +64,14 @@ class RecipeServiceForH2Test {
         assertEquals(1L, returnedRecipe.getId());
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository,never()).findAll();
+    }
 
+    @Test
+    public void testDeleteById() throws Exception{
+        // given
+        recipeService.deleteById(2L);
+
+        //  then
+        verify(recipeRepository,times(1)).deleteById(anyLong());
     }
 }
